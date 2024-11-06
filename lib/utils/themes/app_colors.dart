@@ -23,4 +23,8 @@ MaterialColor createMaterialColor(Color color) {
 
 class AppColors {
   final primaryColor = createMaterialColor(const Color(0xFF3085FE));
+  final approvedColor = createMaterialColor(const Color(0xFF30C0B6));
+  final pendingColor = createMaterialColor(const Color(0xFFFFD21D));
+  final canceledColor = createMaterialColor(const Color(0xFFCB1517));
+  final overtimeIconColor = createMaterialColor(const Color(0xFF292D32));
 }
