@@ -2,6 +2,8 @@ import 'package:attendee/utils/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../widgets/overtime_card_widget.dart';
 import 'package:iconsax/iconsax.dart';
+import '../widgets/overtime_request.dart';
+import '../widgets/add.dart';
 
 class DashboardOvertime extends StatefulWidget {
   const DashboardOvertime({super.key});
@@ -201,7 +203,13 @@ class _DashboardOvertimeState extends State<DashboardOvertime> {
                     IconButton(
                       icon: const Icon(Iconsax.add_square),
                       color: AppColors().overtimeIconColor,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddOvertime()),
+                        );
+                      },
                     ),
                     IconButton(
                       icon: const Icon(Iconsax.setting_4),
