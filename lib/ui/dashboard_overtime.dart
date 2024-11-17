@@ -1,6 +1,7 @@
 import 'package:attendee/utils/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../widgets/overtime_card_widget.dart';
+import '../widgets/details_overtime_card.dart';
 import 'package:iconsax/iconsax.dart';
 import '../widgets/add_overtime.dart';
 
@@ -14,7 +15,6 @@ class DashboardOvertime extends StatefulWidget {
 class _DashboardOvertimeState extends State<DashboardOvertime> {
   String _currentStatus = 'Approved';
 
-  // Data untuk status Approved
   final List<Map<String, String>> _approvedEntries = [
     {
       'date': 'Apr 15, 2024 - Apr 18, 2024',
@@ -22,6 +22,10 @@ class _DashboardOvertimeState extends State<DashboardOvertime> {
       'startTime': '10:10 PM',
       'endTime': '20:11 AM',
       'duration': '10hr 1min',
+      'name': 'Jane Hawkins',
+      'role': 'Fullstack Developer',
+      'project': 'Dev Mobile',
+      'task': 'Development',
     },
     {
       'date': 'Apr 15, 2024 - Apr 18, 2024',
@@ -29,34 +33,10 @@ class _DashboardOvertimeState extends State<DashboardOvertime> {
       'startTime': '10:10 PM',
       'endTime': '20:11 AM',
       'duration': '10hr 1min',
-    },
-    {
-      'date': 'Apr 15, 2024 - Apr 18, 2024',
-      'status': 'Approved',
-      'startTime': '10:10 PM',
-      'endTime': '20:11 AM',
-      'duration': '10hr 1min',
-    },
-    {
-      'date': 'Apr 15, 2024 - Apr 18, 2024',
-      'status': 'Approved',
-      'startTime': '10:10 PM',
-      'endTime': '20:11 AM',
-      'duration': '10hr 1min',
-    },
-    {
-      'date': 'Apr 15, 2024 - Apr 18, 2024',
-      'status': 'Approved',
-      'startTime': '10:10 PM',
-      'endTime': '20:11 AM',
-      'duration': '10hr 1min',
-    },
-    {
-      'date': 'Apr 15, 2024 - Apr 18, 2024',
-      'status': 'Approved',
-      'startTime': '10:10 PM',
-      'endTime': '20:11 AM',
-      'duration': '10hr 1min',
+      'name': 'John Doe',
+      'role': 'Frontend Developer',
+      'project': 'Dev Mobile',
+      'task': 'UI Implementation',
     },
   ];
 
