@@ -17,6 +17,13 @@ class _AddOvertimeState extends State<AddOvertime> {
   TimeOfDay? _endTime;
   String? _selectedEmployee;
 
+  String _formatTimeOfDay(TimeOfDay? time) {
+    if (time == null) return '--:--';
+    final now = DateTime.now();
+    final dt = DateTime(now.year, now.month, now.day, time.hour, time.minute);
+    return DateFormat('HH:mm').format(dt);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -152,45 +159,75 @@ class _AddOvertimeState extends State<AddOvertime> {
                   Row(
                     children: [
                       Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 12),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.05),
-                                blurRadius: 10,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
+                        flex: 2, // Adjusted to make the start time box narrower
+                        child: GestureDetector(
+                          onTap: () async {
+                            final TimeOfDay? picked = await showTimePicker(
+                              context: context,
+                              initialTime: _startTime ?? TimeOfDay.now(),
+                            );
+                            if (picked != null) {
+                              setState(() {
+                                _startTime = picked;
+                              });
+                            }
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 12),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.05),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Text(_formatTimeOfDay(_startTime),
+                                style: TextStyle(fontSize: 16)),
                           ),
-                          child: Text('17:20    PM',
-                              style: TextStyle(fontSize: 16)),
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        child: Text('To', style: TextStyle(fontSize: 16)),
+                      Expanded(
+                        flex: 1, // Adjusted to make the 'To' text box wider
+                        child: const Center(
+                          child: Text('To', style: TextStyle(fontSize: 16)),
+                        ),
                       ),
                       Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.05),
-                                blurRadius: 10,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
+                        flex: 2, // Adjusted to make the end time box narrower
+                        child: GestureDetector(
+                          onTap: () async {
+                            final TimeOfDay? picked = await showTimePicker(
+                              context: context,
+                              initialTime: _endTime ?? TimeOfDay.now(),
+                            );
+                            if (picked != null) {
+                              setState(() {
+                                _endTime = picked;
+                              });
+                            }
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 12),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.05),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Text(_formatTimeOfDay(_endTime),
+                                style: TextStyle(fontSize: 16)),
                           ),
-                          child: Text('20:20    PM',
-                              style: TextStyle(fontSize: 16)),
                         ),
                       ),
                     ],
